@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* CSS inline untuk halaman next.html */
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('joynext.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #333;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: rgba(58, 69, 48, 0.5);
+            z-index: 1;
+        }
+
+        header .logo img {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: rgb(35, 28, 28);
+            background-color: #dcdcdc;
+            padding: 10px 20px;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #a4a4a4;
+        }
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            padding: 20px;
+            background-color: rgba(197, 188, 189, 0.8);
+            position: relative;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            margin-bottom: 50px;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 5vw; /* Ukuran font responsif */
+            color: #4c4531;
+        }
+
+        .hero-content p {
+            font-size: 2.5vw; /* Ukuran font responsif */
+            margin-top: 20px;
+            color: #4c4531;
+        }
+
+        .next-section-button, .back-button {
+            position: absolute;
+            bottom: 30px;
+        }
+
+        .next-section-button {
+            right: 30px;
+        }
+
+        .back-button {
+            left: 30px;
+        }
+
+        .next-section-button a, .back-button a {
+            font-size: 16px;
+            color: #333;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            border: 1px solid black;
+            background-color: white;
+            transition: background-color 0.3s;
+        }
+
+        .next-section-button a:hover, .back-button a:hover {
+            background-color: #181515;
+            color: white;
+        }
+
+        footer {
+            background-color: rgba(58, 69, 48, 0.5);
+            padding: 10px;
+            color: white;
+            text-align: center;
+            z-index: 1;
+        }
+
+        footer p::before {
+            content: '\00A9';
+            margin-right: 5px;
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slide-out {
+            0% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+        }
+
+        .slide-in {
+            animation: slide 0.5s forwards;
+        }
+
+        .slide-out {
+            animation: slide-out 0.5s forwards;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            header .logo img {
+                height: 40px;
+                width: 40px;
+            }
+
+            .hero {
+                padding: 20px;
+            }
+
+            .hero-content h1 {
+                font-size: 6vw;
+            }
+
+            .hero-content p {
+                font-size: 3vw;
+            }
+
+            .next-section-button a, .back-button a {
+                font-size: 14px;
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="joypp.jpg" alt="Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="kategori.html">Kategori</a></li>
+                <li><a href="kontak.html">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero opaque slide-in">
+        <div class="hero-content">
+            <h1>Selamat Datang di Halaman Selanjutnya!</h1>
+            <p>Temukan lebih banyak informasi di sini.</p>
+        </div>
+        <div class="next-section-button">
+            <a href="about.html" id="next-button">Ikut aku yuk! &#8250;</a>
+        </div>
+        <div class="back-button">
+            <a href="index.html" class="cta-button">Balik?</a>
+        </div>        
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Kinderfer program. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('next-button').addEventListener('click', (e) => {
+            e.preventDefault(); // Mencegah link default behavior
+            document.body.classList.add('slide-out');
+            setTimeout(() => {
+                window.location.href = 'about.html';
+            }, 500); // Waktu animasi
+        });
+
+        // Event listener buat ganti warna background hero section
+        document.addEventListener('mousemove', (event) => {
+            const hero = document.querySelector('.hero');
+            const heroRect = hero.getBoundingClientRect();
+            const isMouseInHero = event.clientY > heroRect.top && event.clientY < heroRect.bottom &&
+                                  event.clientX > heroRect.left && event.clientX < heroRect.right;
+
+            if (isMouseInHero) {
+                hero.classList.add('transparent');
+                hero.classList.remove('opaque');
+            } else {
+                hero.classList.add('opaque');
+                hero.classList.remove('transparent');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MLBB Joy</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="joypp.jpg" alt="Logo Joy MLBB">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="kategori.html">Kategori</a></li>
+                <li><a href="kontak.html">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero opaque">
+        <div class="hero-content">
+            <h1>MLBB Joy</h1>
+            <p>Flash of Miracle</p>
+            <a href="joy.jpg" class="cta-button">Ayo Main!</a>
+        </div>
+        <div class="next-section-button">
+            <a href="next.html" id="next-button">Ikut Aku Yuk! &#8250;</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Kinderfer program. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('mousemove', (event) => {
+            const hero = document.querySelector('.hero');
+            const heroRect = hero.getBoundingClientRect();
+            const isMouseInHero = event.clientY > heroRect.top && event.clientY < heroRect.bottom &&
+                                  event.clientX > heroRect.left && event.clientX < heroRect.right;
+
+            if (isMouseInHero) {
+                hero.classList.add('transparent');
+                hero.classList.remove('opaque');
+            } else {
+                hero.classList.add('opaque');
+                hero.classList.remove('transparent');
+            }
+        });
+
+        document.getElementById('next-button').addEventListener('click', (e) => {
+            e.preventDefault(); // Mencegah link default behavior
+            document.body.classList.add('slide-out');
+            setTimeout(() => {
+                window.location.href = 'next.html';
+            }, 500); // Waktu animasi
+        });
+    </script>
+</body>
+</html>
